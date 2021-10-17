@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 #
-# Simple program to get all forks of a GitLab project
+# Simple program to get all the forks of a GitLab projects
 #
 # Jesus M. Gonzalez-Barahona
 # jgb @ gsyc.es
