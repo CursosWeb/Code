@@ -1,0 +1,20 @@
+[
+  {
+    "author": "Pepita Grilla",
+    "text": "This is a message",
+    "isimg": false,
+    "date": "2023-04-16:14:04:02"
+  },
+  {
+    "author": "Pepito Grillo",
+    "text": "This is another message",
+    "isimg": false,
+    "date": "2023-04-16:14:04:01"
+  },
+  {
+    "author": "Pepite Grille",
+    "text": "https://gsyc.urjc.es/logo.gif",
+    "isimg": true,
+    "date": "2023-04-16:14:04:01"
+  }
+]
