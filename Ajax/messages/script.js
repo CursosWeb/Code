@@ -29,11 +29,10 @@ function getMessages (url, container) {
 
 window.addEventListener("DOMContentLoaded", (event) => {
   console.log("DOM fully loaded and parsed");
-  const url = 'messages.json';
   const container = document.querySelector('#messages');
-  getMessages(url, container);
+  getMessages(url_messages, container);
   setInterval(() => {
     console.log("Interval");
-    getMessages(url, container);
+    getMessages(url_messages, container);
     }, 30 * 1000); // Call every 30 seconds
 });
