@@ -70,7 +70,12 @@ practices = {
     "minip2": {
         'repo': 'cursosweb/2022-2023/mini-2-acortadora',
         'repo_api': 'cursosweb%2F2022-2023%2Fmini-2-acortadora',
+    },
+    "final": {
+        'repo': 'cursosweb/2022-2023/final-decharla',
+        'repo_api': 'cursosweb%2F2022-2023%2Ffinal-decharla',
     }
+
 }
 
 add_api(practices)
