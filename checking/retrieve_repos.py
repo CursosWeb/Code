@@ -35,25 +35,20 @@ def add_api (practices):
 
 practices = {
     "01-calculadora": {
-        'repo': 'cursosweb/2022-2023/calculadora',
-        'repo_api': 'cursosweb%2F2022-2023%2Fcalculadora'
+        'repo': 'cursosweb/2023-2024/calculadora',
+        'repo_api': 'cursosweb%2F2023-2024%2Fcalculadora'
     },
-    "02-descargaweb": {
-        'repo': 'cursosweb/2022-2023/descarga-documentos-web',
-        'repo_api': 'cursosweb%2F2022-2023%2Fdescarga-documentos-web',
+    "02-descargawebmodulos": {
+        'repo': 'cursosweb/2023-2024/descarga-documentos-web-modulos',
+        'repo_api': 'cursosweb%2F2023-2024%2Fddescarga-documentos-web-modulos',
     },
-    "03-descargawebmodulos": {
-        'repo': 'cursosweb/2022-2023/descarga-documentos-web-modulos',
-        'repo_api': 'cursosweb%2F2022-2023%2Fddescarga-documentos-web-modulos',
+    "03-redir": {
+        'repo': 'cursosweb/2023-2024/aplicacion-redirectora',
+        'repo_api': 'cursosweb%2F2023-2024%2Faplicacion-redirectora',
     },
-    "04-redir": {
-        'repo': 'cursosweb/2022-2023/aplicacion-redirectora',
-        'repo_api': 'cursosweb%2F2022-2023%2Faplicacion-redirectora',
-    },
-    # Solo para SAT/SARO
-    "05-contentapp": {
-        'repo': 'cursosweb/2022-2023/contentapp',
-        'repo_api': 'cursosweb%2F2022-2023%2Fcontentapp',
+    "04-contentapp": {
+        'repo': 'cursosweb/2023-2024/contentapp',
+        'repo_api': 'cursosweb%2F2023-2024%2Fcontentapp',
     },
     "06-contentpostapp": {
         'repo': 'cursosweb/2022-2023/contentpostapp',
