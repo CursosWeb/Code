@@ -2,7 +2,7 @@
 
 ## retrieve_repos.py
 
-Retrieve repositories from the ETSIT GitLab instance which are forked from a template repository, and are in a list of students.
+Retrieve repositories from the EIF GitLab instance which are forked from a template repository, and are in a list of students.
 
 For each practice, there is a dictionary in `retrieve_repos.py`, `practices`, specifying the name of the template repository, and the name of the repository in the GitLab API.
 
@@ -14,9 +14,9 @@ For each subject, there is a CSV file **exported from the Aulavirtual subject** 
 
 Cloned repositories, by default, go to directory retrieved/<students_file_name>/id (being `id` the identified of  the practice in the `practices` repository).
 
-To run the script, a file `token` with a valid ETSIT GitLub token should be in the directory from which the script is run.
+To run the script, a file `token` with a valid EIF GitLub token should be in the directory from which the script is run.
 
-**IMPORTANT**: If the lab username of the students are not available, this script should be executed in a **lab.etsit machine** since it executes the `finger` command for matching the URJC username to the ETSIT lab username. See __Returned files section__ for further information.
+**IMPORTANT**: If the lab username of the students are not available, this script should be executed in a **lab.eif machine** since it executes the `finger` command for matching the URJC username to the EIF lab username. See __Returned files section__ for further information.
 
 ### Returned files: 
 
