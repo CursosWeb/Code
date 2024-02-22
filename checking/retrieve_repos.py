@@ -38,13 +38,25 @@ practices = {
         'repo': 'cursosweb/2023-2024/calculadora',
         'repo_api': 'cursosweb%2F2023-2024%2Fcalculadora'
     },
+    "01-calculadora-b": {
+        'repo': 'cursosweb/2022-2023/calculadora',
+        'repo_api': 'cursosweb%2F2022-2023%2Fcalculadora'
+    },
     "02-descargawebmodulos": {
-        'repo': 'cursosweb/2023-2024/descarga-documentos-web-modulos',
-        'repo_api': 'cursosweb%2F2023-2024%2Fddescarga-documentos-web-modulos',
+        'repo': 'cursosweb/2023-2024/descarga-documentos-web-con-modulos',
+        'repo_api': 'cursosweb%2F2023-2024%2Fddescarga-documentos-web-con-modulos',
+    },
+    "02-descargawebmodulos-b": {
+        'repo': 'cursosweb/2022-2023/descarga-documentos-web-modulos',
+        'repo_api': 'cursosweb%2F2022-2023%2Fddescarga-documentos-web-modulos',
     },
     "03-redir": {
         'repo': 'cursosweb/2023-2024/aplicacion-redirectora',
         'repo_api': 'cursosweb%2F2023-2024%2Faplicacion-redirectora',
+    },
+    "03-redir-b": {
+        'repo': 'cursosweb/2022-2023/aplicacion-redirectora',
+        'repo_api': 'cursosweb%2F2022-2023%2Faplicacion-redirectora',
     },
     "04-contentapp": {
         'repo': 'cursosweb/2023-2024/contentapp',
