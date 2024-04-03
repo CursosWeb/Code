@@ -1,0 +1,19 @@
+# Desarrolla juegos en 2D con Pygame
+
+Pygame es una biblioteca de desarrollo de juegos en Python que permite a los desarrolladores crear juegos de manera rápida y fácil. Con Pygame se aprovechan las capacidades gráficas y de sonido de Python para crear juegos 2D. Pygame contiene configuración para efectos visuales y música para proyectos más complejos. 
+
+* Dependencias: [pygame](https://www.pygame.org/news)
+
+```commandline
+pip install pytube
+```
+
+ 
+* Juego simple: [esquiva obstáculos](./juego.py)
+
+```commandline
+python3 juego.py
+```
+
+
+
