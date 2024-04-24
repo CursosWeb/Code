@@ -1,4 +1,4 @@
-# Desarrolla juegos en 2D con Pygame
+# Edita videos
 
 MoviePy es una biblioteca de Python para edición de video: corte, concatenaciones, inserciones de títulos, composición de video (también conocida como edición no lineal), procesamiento de video y creación de efectos personalizados.
 
