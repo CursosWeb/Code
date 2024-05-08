@@ -1,6 +1,7 @@
 # Frikiminutos (software)
 
-* 2024-04-25. [Awesome Python](./awesome.md)
+* 2024-05.09. [Python en el navegador](pyscript.md)
+* 2024-04-25. [Awesome Python](awesome.md)
 * 2024-04-18. [Edita videos](moviepy/moviepy.md)
 * 2024-04-11. [Crea gráficos y dibujos](turtle/turtle.md)
 * 2024-04-04. [Desarrolla juegos en 2D](pygame/pygame.md)
