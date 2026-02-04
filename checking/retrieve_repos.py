@@ -71,16 +71,16 @@ practices = {
         'repo_api': 'cursosweb%2F2022-2023%django-cms-put',
     },
     "minip1": {
-        'repo': 'cursosweb/2022-2023/mini-1-acortadora',
-        'repo_api': 'cursosweb%2F2022-2023%2Fmini-1-acortadora',
+        'repo': 'cursosweb/2023-2024/mini-1-acortadora',
+        'repo_api': 'cursosweb%2F2023-2024%2Fmini-1-acortadora',
     },
     "minip2": {
-        'repo': 'cursosweb/2022-2023/mini-2-acortadora',
-        'repo_api': 'cursosweb%2F2022-2023%2Fmini-2-acortadora',
+        'repo': 'cursosweb/2023-2024/mini-2-acortadora',
+        'repo_api': 'cursosweb%2F2023-2024%2Fmini-2-acortadora',
     },
     "final": {
-        'repo': 'cursosweb/2022-2023/final-decharla',
-        'repo_api': 'cursosweb%2F2022-2023%2Ffinal-decharla',
+        'repo': 'cursosweb/2023-2024/final-teveo',
+        'repo_api': 'cursosweb%2F2023-2024%2Ffinal-teveo',
     }
 
 }
