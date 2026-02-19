@@ -1,3 +1,4 @@
 Django==3.2
 beautifulsoup4
+python-dotenv
 gitpython

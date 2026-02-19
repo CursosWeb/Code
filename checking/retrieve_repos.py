@@ -18,37 +18,44 @@ import csv
 import json
 import os
 import subprocess
+import urllib.parse
 import urllib.request
 import re
+import sys
 
-from shutil import copyfile
-from distutils.dir_util import copy_tree
+from dotenv import load_dotenv
+from shutil import copyfile, copytree
 from unicodedata import normalize
 
 from git.repo.base import Repo
 from git.exc import GitCommandError
 
 
-def add_api (practices):
-    for number, practice in practices.items():
-        practice['repo_api'] = practice['repo'].replace('/', '%2F')
+#def add_api (practices):
+#    for number, practice in practices.items():
+#        practice['repo_api'] = practice['repo'].replace('/', '%2F')
+
+templates_cursosweb = 'cursosweb/2025-2026'
+templates_ltaw = 'cursosweb/2025-2026-ltaw'
 
 practices = {
-    "01-calculadora": {
-        'repo': 'cursosweb/2023-2024/calculadora',
-        'repo_api': 'cursosweb%2F2023-2024%2Fcalculadora'
+    "01-ltaw-servidor-carrito": {
+        'repo': f'{templates_ltaw}/servidor-carrito',
     },
-    "01-calculadora-b": {
-        'repo': 'cursosweb/2022-2023/calculadora',
-        'repo_api': 'cursosweb%2F2022-2023%2Fcalculadora'
+    "02-ltaw-servidor-cookies": {
+        'repo': f'{templates_ltaw}/servidor-carrito',
+    },
+    "03-ltaw-trazador": {
+        'repo': f'{templates_ltaw}/trazador',
+    },
+    "01-sat-cabeceras": {
+        'repo': f'{templates_cursosweb}/cabeceras',
+    },
+    "01-calculadora": {
+        'repo': f'{templates_cursosweb}/calculadora',
     },
     "02-descargawebmodulos": {
-        'repo': 'cursosweb/2023-2024/descarga-documentos-web-con-modulos',
-        'repo_api': 'cursosweb%2F2023-2024%2Fddescarga-documentos-web-con-modulos',
-    },
-    "02-descargawebmodulos-b": {
-        'repo': 'cursosweb/2022-2023/descarga-documentos-web-modulos',
-        'repo_api': 'cursosweb%2F2022-2023%2Fddescarga-documentos-web-modulos',
+        'repo': f'{templates_cursosweb}/descarga-documentos-web-con-modulos',
     },
     "03-redir": {
         'repo': 'cursosweb/2023-2024/aplicacion-redirectora',
@@ -85,17 +92,12 @@ practices = {
 
 }
 
-add_api(practices)
-
+#add_api(practices)
 
 def get_token() -> str:
-    try:
-        with open('token', 'r') as token_file:
-            token: str = token_file.readline().rstrip()
-            return token
-    except FileNotFoundError:
-        return ''
-
+    load_dotenv(dotenv_path='.env')
+    token = os.getenv('GITLAB_TOKEN')
+    return token
 
 def get_forks(repo: str, token: str = ''):
     req_headers = {}
@@ -105,7 +107,8 @@ def get_forks(repo: str, token: str = ''):
     this_page, total_pages = 1, None
     forks = []
     while (total_pages is None) or (this_page <= total_pages):
-        url = f"https://gitlab.etsit.urjc.es/api/v4/projects/{repo}/forks?per_page=50&page={this_page}"
+        url = f"https://gitlab.eif.urjc.es/api/v4/projects/{repo}/forks?per_page=50&page={this_page}"
+        print("url:", url)
         req = urllib.request.Request(url=url, headers=req_headers)
         with urllib.request.urlopen(req) as response:
             contents = response.read()
@@ -207,7 +210,11 @@ def run_tests(dir: str, solved_dir: str, silent: bool=False):
     print("Running tests for", dir)
     # Copy tests to evaltests in analyzed directory
     tests_dir = os.path.join(solved_dir, 'tests')
-    copy_tree(tests_dir, os.path.join(dir, 'evaltests'))
+    evaltests_dir = os.path.join(dir, 'evaltests')
+    if os.path.exists(evaltests_dir):
+        import shutil
+        shutil.rmtree(evaltests_dir)
+    copytree(tests_dir, evaltests_dir)
     # Copy check.py to analyzed directory
     copyfile(os.path.join(solved_dir, 'check.py'), os.path.join(dir, 'check.py'))
     test_call = ['python3', 'check.py', '--silent', '--testsdir', 'evaltests']
@@ -249,7 +256,9 @@ def parse_args():
 
 def retrieve_practice(practice_id, cloning_dir, token):
     practice = practices[practice_id]
-    forks = get_forks(repo=practice['repo_api'], token=token)
+    repo_api = urllib.parse.quote(practice['repo'], safe='')
+    print(repo_api, file=sys.stderr)
+    forks = get_forks(repo=repo_api, token=token)
     repos_found = 0
     #    print(forks)
 

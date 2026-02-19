@@ -23,3 +23,9 @@ To run the script, a file `token` with a valid EIF GitLub token should be in the
 By default, the script will return two useful files:
 - `not_founds.txt`: file with those students with problems finding their fork
 - `<students_filename>_enriched.csv`: csv enriched with the lab username and gitlab username (if found) of the students. And this csv could be used in the next executions for retrieving the practises without being in a lab etsit machine.
+
+### Example
+
+```commandline
+python3 retrieve_repos.py --students isam-ltaw-2026.csv --practice servidor-carrito --cloning_dir ../../retrieved-2026
+```
