@@ -2,8 +2,9 @@
 
 from pytubefix import YouTube
 
-ytlink = "https://www.youtube.com/watch?v=r3dNIF6lq54"
+ytlink = "https://www.youtube.com/watch?v=84Tq-eAJIk4"
 
-object = YouTube(ytlink)
+object = YouTube(ytlink, use_oauth=True, allow_oauth_cache=True)
+print(object.title)
 stream = object.streams.get_audio_only()
 stream.download()
