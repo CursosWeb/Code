@@ -259,51 +259,48 @@ def retrieve_practice(practice_id, cloning_dir, token):
     repo_api = urllib.parse.quote(practice['repo'], safe='')
     print(repo_api, file=sys.stderr)
     forks = get_forks(repo=repo_api, token=token)
+    forks_by_path = {fork['namespace']['path']: fork for fork in forks}
     repos_found = 0
     #    print(forks)
 
     students = read_csv(args.students)
     file_modified = False
 
-    for fork in forks:
-        # Each fork is a repo to consider
-        fork_data = {
-            'url': fork['http_url_to_repo'],
-            'name': fork['namespace']['name'],
-            'path': fork['namespace']['path']
-        }
+    for student_data in students.values():
+        # Check in order to match the gitlab username with the student lab/correo
+        if "foundingitlab" not in student_data:
+            student_data['foundingitlab'] = False
+            if 'usuario_gitlab' not in student_data:
+                student_data['usuario_gitlab'] = ""
 
-        for student_data in students.values():
-            # Check in order to match the gitlab username with the student lab/correo
-            if "foundingitlab" not in student_data:
-                student_data['foundingitlab'] = False
-                if 'usuario_gitlab' not in student_data:
-                    student_data['usuario_gitlab'] = ""
+        selected_path = None
+        if student_data['usuario_correo'] in forks_by_path:
+            selected_path = student_data['usuario_correo']
+        elif student_data.get('usuario_lab') in forks_by_path:
+            selected_path = student_data['usuario_lab']
+        elif student_data.get('usuario_lab'):
+            lab_with_suffix = f"{student_data['usuario_lab']}1"
+            if lab_with_suffix in forks_by_path:
+                selected_path = lab_with_suffix
 
-            if student_data['usuario_correo'] == fork_data['path']:
-                student_data['foundingitlab'] = True
-                if 'usuario_gitlab' not in student_data or student_data['usuario_gitlab'] != fork_data['path']:
-                    student_data['usuario_gitlab'] = fork_data['path']
-                    file_modified = True
-            elif student_data['usuario_lab'] == fork_data['path']:
-                student_data['foundingitlab'] = True
-                if 'usuario_gitlab' not in student_data or student_data['usuario_gitlab'] != fork_data['path']:
-                    student_data['usuario_gitlab'] = fork_data['path']
-                    file_modified = True
-            else:
-                continue
+        if not selected_path:
+            continue
 
-            # If I found the match between gitlab username and student, clone the repo
-            if student_data['foundingitlab']:
-                # We're only interested in repos in the list of students
-                print(f"Found: {fork_data['path']}")
-                repos_found += 1
-                if not args.no_clone:
-                    dir = os.path.join(cloning_dir, args.students.split(".csv")[0], practice_id, fork_data['path'])
-                    try:
-                        clone(fork_data['url'], dir, token)
-                    except GitCommandError:
-                        pass
+        student_data['foundingitlab'] = True
+        if student_data.get('usuario_gitlab') != selected_path:
+            student_data['usuario_gitlab'] = selected_path
+            file_modified = True
+
+        fork = forks_by_path[selected_path]
+        # If I found the match between gitlab username and student, clone the repo
+        print(f"Found: {selected_path}")
+        repos_found += 1
+        if not args.no_clone:
+            dir = os.path.join(cloning_dir, args.students.split(".csv")[0], practice_id, selected_path)
+            try:
+                clone(fork['http_url_to_repo'], dir, token)
+            except GitCommandError:
+                pass
 
         # # Run tests in the cloned repo
         # print("About to run tests:", os.path.join(testing_dir, fork_data['path']))
