@@ -5,7 +5,7 @@ Elimina los planos de fondo (background) de una foto: [background.py](background
 * Dependencias: [rembg](https://github.com/danielgatis/rembg)
 
 ```commandline
-pip install rembg[cli]
+pip install rembg[cli,cpu]
 ```
 
 * Otros detalles de instalación: La primera vez que se ejecuta, puede que el módulo `rembg` trate de descargarse el modelo de aprendizaje automático (machine learning) que utiliza. Su descarga puede fallar, porque se almacena en Google Drive, que tiene limitaciones para descarga. Si eso ocurre, se verá un error que incluye algo como:
