@@ -51,6 +51,9 @@ practices = {
     "01-sat-cabeceras": {
         'repo': f'{templates_cursosweb}/cabeceras',
     },
+    "02-sat-aleatorias": {
+        'repo': f'{templates_cursosweb}/urls-aleatorias',
+    },
     "01-calculadora": {
         'repo': f'{templates_cursosweb}/calculadora',
     },
