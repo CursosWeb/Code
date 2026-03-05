@@ -14,7 +14,7 @@ import webapp
 
 FORM = """
     <hr>
-    <form action="/" method="post">
+    <form action="/" method="post" accept-charset="UTF-8">
       <div>
         <label>Resource: </label>
         <input type="text" name="resource" required>
@@ -32,6 +32,9 @@ FORM = """
 PAGE = """
 <!DOCTYPE html>
 <html lang="en">
+<head>
+  <meta charset="UTF-8">
+</head>
   <body>
     <div>
       <p>Content for {resource}:</p> {content}
@@ -46,6 +49,9 @@ PAGE = """
 PAGE_NOT_FOUND = """
 <!DOCTYPE html>
 <html lang="en">
+<head>
+  <meta charset="UTF-8">
+</head>
   <body>
     <div>
       <p>Resource not found: {resource}.</p>
@@ -60,6 +66,9 @@ PAGE_NOT_FOUND = """
 PAGE_NOT_ALLOWED = """
 <!DOCTYPE html>
 <html lang="en">
+<head>
+  <meta charset="UTF-8">
+</head>
   <body>
     <p>Method not allowed: {method}.</p>
   </body>
@@ -69,6 +78,9 @@ PAGE_NOT_ALLOWED = """
 PAGE_UNPROCESABLE = """
 <!DOCTYPE html>
 <html lang="en">
+<head>
+  <meta charset="UTF-8">
+</head>
   <body>
     <p>Unprocesable POST: {body}.</p>
   </body>
@@ -126,7 +138,7 @@ class ContentApp(webapp.webApp):
         return code, page
 
     def post(self, resource, body):
-        fields = parse.parse_qs(body)
+        fields = parse.parse_qs(body, encoding='utf-8')
         print("Fields:", fields)
         if (resource == '/'):
             if ('resource' in fields) and ('content' in fields):
