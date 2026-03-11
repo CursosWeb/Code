@@ -15,7 +15,7 @@ PAGE = """
 <!DOCTYPE html>
 <html lang='en'>
   <head>
-    <script src='https://unpkg.com/htmx.org@1.9.10'></script>
+    <script src='https://cdn.jsdelivr.net/npm/htmx.org@2.0.8/dist/htmx.min.js'></script>
   </head>
   <body>
     <div>
