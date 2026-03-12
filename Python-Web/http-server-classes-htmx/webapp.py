@@ -53,6 +53,11 @@ class WebApp:
             (recvSocket, address) = mySocket.accept()
             print("HTTP request received (going to parse and process):")
             request = recvSocket.recv(8*1024)
+            # Check if request is empty
+            if not request:
+                print("Empty request received, closing connection")
+                recvSocket.close()
+                continue
             print(request)
             parsedRequest = self.parse(request.decode('utf8'))
             (returnCode, htmlAnswer) = self.process(parsedRequest)
