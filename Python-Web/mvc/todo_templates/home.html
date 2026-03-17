@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Tareas</title>
+    <style>
+        body {{
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }}
+        h1 {{
+            color: #333;
+            text-align: center;
+        }}
+        .add-form {{
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }}
+        .add-form input[type="text"] {{
+            width: 70%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }}
+        .add-form button {{
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }}
+        .add-form button:hover {{
+            background-color: #45a049;
+        }}
+        .todo-list {{
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }}
+        .todo-item {{
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }}
+        .todo-item:last-child {{
+            border-bottom: none;
+        }}
+        .todo-item.completed {{
+            background-color: #f9f9f9;
+        }}
+        .todo-item.completed .todo-title {{
+            text-decoration: line-through;
+            color: #888;
+        }}
+        .todo-title {{
+            flex: 1;
+            margin: 0 15px;
+        }}
+        .todo-actions a {{
+            color: #2196F3;
+            text-decoration: none;
+            margin: 0 5px;
+            padding: 5px 10px;
+            border: 1px solid #2196F3;
+            border-radius: 3px;
+            font-size: 12px;
+        }}
+        .todo-actions a:hover {{
+            background-color: #2196F3;
+            color: white;
+        }}
+        .todo-actions a.delete {{
+            color: #f44336;
+            border-color: #f44336;
+        }}
+        .todo-actions a.delete:hover {{
+            background-color: #f44336;
+            color: white;
+        }}
+        .empty-state {{
+            text-align: center;
+            padding: 40px;
+            color: #888;
+        }}
+        .stats {{
+            text-align: center;
+            margin-bottom: 20px;
+            color: #666;
+        }}
+    </style>
+</head>
+<body>
+    <h1>📝 Lista de Tareas</h1>
+    
+    <div class="stats">
+        Total de tareas: {count}
+    </div>
+    
+    <div class="add-form">
+        <form method="POST" action="/add">
+            <input type="text" name="title" placeholder="Nueva tarea..." required>
+            <button type="submit">Añadir</button>
+        </form>
+    </div>
+    
+    <div class="todo-list">
+        {todo_items}
+    </div>
+</body>
+</html>

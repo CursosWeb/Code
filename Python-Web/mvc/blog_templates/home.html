@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Simple</title>
+    <style>
+        body {{
+            font-family: Georgia, serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fafafa;
+            line-height: 1.6;
+        }}
+        h1 {{
+            color: #333;
+            text-align: center;
+            border-bottom: 3px solid #333;
+            padding-bottom: 10px;
+        }}
+        .add-form {{
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }}
+        .add-form h2 {{
+            margin-top: 0;
+            color: #444;
+        }}
+        .form-group {{
+            margin-bottom: 15px;
+        }}
+        .form-group label {{
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }}
+        .form-group input[type="text"],
+        .form-group textarea {{
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+            box-sizing: border-box;
+        }}
+        .form-group textarea {{
+            height: 120px;
+            resize: vertical;
+        }}
+        .form-group button {{
+            padding: 12px 24px;
+            background-color: #8B4513;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }}
+        .form-group button:hover {{
+            background-color: #A0522D;
+        }}
+        .posts-list {{
+            margin-top: 30px;
+        }}
+        .post-summary {{
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-left: 4px solid #8B4513;
+        }}
+        .post-title {{
+            font-size: 24px;
+            margin: 0 0 10px 0;
+        }}
+        .post-title a {{
+            color: #333;
+            text-decoration: none;
+        }}
+        .post-title a:hover {{
+            color: #8B4513;
+        }}
+        .post-meta {{
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 15px;
+            font-style: italic;
+        }}
+        .post-excerpt {{
+            color: #444;
+            margin-bottom: 15px;
+        }}
+        .post-actions {{
+            text-align: right;
+        }}
+        .post-actions a {{
+            color: #d32f2f;
+            text-decoration: none;
+            padding: 5px 10px;
+            border: 1px solid #d32f2f;
+            border-radius: 3px;
+            font-size: 12px;
+        }}
+        .post-actions a:hover {{
+            background-color: #d32f2f;
+            color: white;
+        }}
+        .empty-state {{
+            text-align: center;
+            padding: 60px;
+            color: #888;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }}
+    </style>
+</head>
+<body>
+    <h1>📖 Blog Simple</h1>
+    
+    <div class="add-form">
+        <h2>Nuevo Post</h2>
+        <form method="POST" action="/add">
+            <div class="form-group">
+                <label for="title">Título:</label>
+                <input type="text" name="title" id="title" required>
+            </div>
+            <div class="form-group">
+                <label for="author">Autor:</label>
+                <input type="text" name="author" id="author" placeholder="Anónimo">
+            </div>
+            <div class="form-group">
+                <label for="content">Contenido:</label>
+                <textarea name="content" id="content" required></textarea>
+            </div>
+            <div class="form-group">
+                <button type="submit">Publicar</button>
+            </div>
+        </form>
+    </div>
+    
+    <div class="posts-list">
+        {post_items}
+    </div>
+</body>
+</html>
