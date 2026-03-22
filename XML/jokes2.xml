@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<jokelist>
+  <joke title="Van nombrando">
+    <start>Oiga, ¿el otorrino va por número?</start>
+    <end>Van nombrando.</end>
+    <end>Qué gran actor, pero no me cambie de tema.</end>
+  </joke>
+
+  <joke title="Supervisión">
+    <start>Mamá, ¿puedo usar tu coche?</start>
+    <end>¡No sin mi supervisión, Jaimito!</end>
+    <end>¡Huy, perdón por no tener superpoderes como tú!</end>
+  </joke>
+
+</jokelist>
